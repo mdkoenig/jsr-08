@@ -11,8 +11,18 @@ You'll add the ability to complete the you gotta be's in your lyrics list:
 
 */
 
+$('#new-thing-button').on('click', function() {
+    event.preventDefault();
+    var list = $('#gotta-be-list');
+    var thing = $('#new-thing').val();
+    addToList(list, thing);
+});
+
 function addToList($list, thing) {
   var $thingLi = $('<li>').text(thing);
+  var complete = $('<span class="complete">');
+  $("li").after(complete);
+  $("span").html("(Complete)");
   $list.append($thingLi);
   addCompleteLinks($thingLi);
 }
